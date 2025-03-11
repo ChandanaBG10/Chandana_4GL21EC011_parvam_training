@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        th{
+                color: rgb(106, 8, 197);
+                background-color: aquamarine;
+            }
+            td{
+                color: rgb(190, 76, 205);
+                color: rgba(190, 76, 205,1);
+                background-color:yellow;
+            }
+            table{
+                border-width:2px;
+                border-color: brown;
+                /* border-style: dashed,dotted, solid, dashed,groove,ridge */
+                border-style: solid;
+                border-collapse: collapse;
+            }
+            td{
+                border:2px solid blueviolet;
+                border-radius: 5px;
+                border-collapse:collapse ;
+            
+            }
+            .para-one{
+                color: blueviolet;
+                background-image: url("media/india.jpg");
+                font-size: 10px;
+                font-weight: 10px;
+                font-family: "sigmar",serif;
+                
+            }
+            .para-two{
+                color: gold;
+                background-image: url("media/culture.jpeg");
+                font-size: 30px;
+                font-weight: 30px;
+                font-family: "sigmar",serif;
+            }
+            .para-three{
+                color:blue;
+                background-color:antiquewhite;
+                font-size: 30px;
+                font-weight: 30px;
+                font-family: "sigmar",serif;
+                margin: 20px;
+            }
+            .para-four{
+                color: brown;
+                background-color: aqua;
+                font-size: 30px;
+                font-weight: 30px;
+                font-family: "Sigmar", serif;
+                margin: 20px;
+            }
+            .parent{
+    border: 2px solid blue;
+    display: flex;
+    height: 1200px;
+    justify-content: start;
+    align-items:center;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-content: center;
+    gap: 100px;
+    background-image: url("media/lotus.jpg");
+}
+.child{
+    width: 200px;
+    height: 100px;
+    background-color: palevioletred;
+    border: 1px solid white;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Sigmar", serif;
+
+}
+nav{
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    
+}
+.menu-bar{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: blue;
+    font-size: 20px;
+    font-weight: bolder;
+}
+img{
+    width: 200px;
+    border-radius: 10px;
+}
+video{
+    border-radius: 20px;
+}
+.menu-item{
+    padding: 20px;
+    
+}
+.logoindia{
+    flex-grow: 2;
+}
+a:hover{
+    color: pink;
+    text-decoration: underline;
+    font-size: 30px;
+}
+form{
+    border: 3px solid black;
+    background-color: aqua;
+    
+}
+footer{
+    text-align: center;
+}
+.para{
+    color: blue;
+    font-size: 50px;
+    font-family: "Sigmar", serif;
+    background-image: url("media/lotus.jpg");
+    
+}
+        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Sigmar&display=swap" rel="stylesheet">
+    </head>
+    <body>     
+</head>
+<body>
+    <header>
+    <nav>
+        <ul class="menu-bar">
+
+                <li class="menu-item logo">
+                    <img src="media/logoindia.jpeg" alt="">
+                </li>
+            <li>
+                <a href="#country">Home</a>
+            </li>
+            <li>
+                <a href="#state-and-capital">About</a>
+            </li>
+            <li>
+                <a href="#images">Images</a>
+            </li>
+            <li>
+                <a href="#states">States</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    </header>
+    <aside>
+        <p class="para-one">information about country and states</p> 
+    </aside>
+
+    <main>
+        <section id="country">
+            <h2 class="para-two">INDIA</h2>
+            <h3 class="para-two">India is a republic country</h3>
+            <p>India offical the republic of India,is a country of south asia.
+                It is a seventh largest country by area.
+                offical language is hindi.
+                It has a world's most popular democarcy.
+                bounded by the indian ocean on the south,the arbian sea on the southwest and bay of bengal on the southeast
+            </p>
+            </section>
+            <section id="state-and-capital">
+                <h1 class="para">About India</h1>
+                <h3>states and its capital</h3>
+                <table>
+                    <tr>
+                    <th>State</th>
+                    <th>Capital</th>
+                    <th>Language</th>
+                    </tr>
+                    <tr>
+                    <td>Andra Pradesh</td>
+                    <td>Amaravatdi</td>
+                    <td>Telagu</td>
+                    </tr>
+                    <tr>
+                        <td>Assam</td>
+                        <td>Dispur</td>
+                        <td>Assamese</td>
+                    </tr>
+                    <tr>
+                        <td>Goa</td>
+                        <td>Panaji</td>
+                        <td>Konkani</td>
+                    </tr>
+                    <tr>
+                        <td>Karnataka</td>
+                        <td>Bengaluru</td>
+                        <td>Kannada</td>
+                    </tr>
+                     <tr>
+                            <td>panjab</td>
+                            <td>Chandigarh</td>
+                            <td>Punjab</td>
+                    </tr>
+                    <tr>
+                        <td>Telagana</td>
+                        <td>Hyderbad</td>
+                        <td>Telagu</td>
+                    </tr>
+                    <tr>
+                        <td>West Bengal</td>
+                        <td>Kolkata</td>
+                        <td>Bengali</td>
+                    </tr>
+                </table>
+            <h4 class="para-three">KARNATAKA</h4>
+            <p>one of the state of india.The state mainly divided into three parts.
+               <ol>
+                <li>Coastel region</li>
+                <li>Malnad region</li>
+                <li>Maidan region</li>
+               </ol>
+            </p>
+            <h4 class="para-four">BENGALORE</h4>
+            <p>It is a capital of karnataka.The center of high tech industry and the city is also known as the silicon city</p>
+            <h3>Benefit for living in bangalore</h3>
+            <ul>
+                <li>Job Opportunities</li>
+                <li>climate</li>
+                <li>education facility</li>
+                <li>food</li>
+                <li>Entertaniment</li>
+                <li>Health</li>
+                <li>public transport</li>
+                <li>connectivity</li>
+            </ul>
+
+        </section>
+        <section id="images">
+        <h3>Indian Flag</h3>
+            <figure>
+                <img src="media/india.jpg" alt="india" width="200px"><br><br>
+                <figcaption>Flag</figcaption>
+                <img src="media/map.jpeg"alt="india" width="200px"><br><br>
+                <figcaption>Map</figcaption>
+                <img src="media/culture.jpeg" alt="india" width="200px"><br><br>
+                <figcaption>culture</figcaption>
+                <video src="media/flag.mp4" controls src width="200px" muted loop autoplay ></video><br><br>
+                <audio controls src="media/spinng.mp3" autoplay muted loop></audio><br>
+
+            </figure>
+            </section>
+
+            <section id="states">
+                <h1>States of India</h1>
+                <div class="parent">
+                    <div class="child">1 Assam</div>
+                    <div class="child">2 Arunchal Pradesh</div>
+                    <div class="child">3 Andra Pradesh</div>
+                    <div class="child">4 Bihar</div>
+                    <div class="child">5 Chattisgarh</div>
+                    <div class="child">6 Goa</div>
+                    <div class="child">7 Gujarat</div>
+                    <div class="child">8 Haryana</div>
+                    <div class="child">9 Himachal Pradesh</div>
+                    <div class="child">10 Jharkand</div>
+                    <div class="child">11 Karnataka</div>
+                    <div class="child">12 Kelara</div>
+                    <div class="child">13 M P</div>
+                    <div class="child">14 Maharashtra</div>
+                    <div class="child">15 Manipur</div>
+                    <div class="child">16 Meghalaya</div>
+                    <div class="child">17 Mizonram</div>
+                    <div class="child">18 Nagaland</div>
+                    <div class="child">19 Odisha</div>
+                    <div class="child">20 Punjab</div>
+                    <div class="child">21 Rajasthan</div>
+                    <div class="child">22 Sikkim</div>
+                    <div class="child">23 Tamil Nadu</div>
+                    <div class="child">24 Telangana</div>
+                    <div class="child">25 Tripura</div>
+                    <div class="child">26 Uttar pradesh</div>
+                    <div class="child">27 Uttarkand</div>
+                    <div class="child">28 West Bengal</div>
+                </div>
+
+            </section>
+            <br><br>
+
+            <section id="contact">
+                <h1 class="para-two">contact us</h1>
+                <form method="post" action="">
+                    <label for="first_name">first name:</label>
+                    <input type="text" name="first_name" id="first_name" maxlength="20" minlength="3" placeholder="Enter Your name" autofocus required><br><br>
+            
+                    <label for="middle_name">middle name:</label>
+                    <input type="text" name="Middle_name" id="Middle_name" autofocus><br><br>
+                    
+                    <label for="last name">last name:</label>
+                    <input type="text" name="Last_name" id="Last_name"><br><br>
+            
+                    <label for="email_id"> Email Id:</label>
+                    <input type="email" name="email_id" id="email_id"><br><br>
+            
+                    <label for="Password"> Password:</label>
+                    <input type="password" name="password" id="password"><br><br>
+            
+                    <label for="phone number">phone number:</label>
+                    <input type="tel" name="phone_number" id="phone_number"><br><br>
+
+            </section>
+    </main>
+    <footer>
+        <p>All Rights Reserved & copy; 2025,
+            <a href="https://www.Google.com" target="_blank">Google </a>
+            </p>
+        </footer>
+
+</body>
+</html>

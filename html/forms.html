@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <form method="post" action="">
+        <input type="hidden" name="secret_id" id="secrect_id" value="Bond-007">
+        <label for="USN">usn</label>
+        <input type="text" name="USN" id="USN" value="4GL21EC011" readonly>
+        <label for="first_name">first name:</label>
+        <input type="text" name="first_name" id="first_name" maxlength="20" minlength="3" placeholder="Enter Your name" autofocus required><br><br>
+
+        <label for="middle_name">middle name:</label>
+        <input type="text" name="Middle_name" id="Middle_name" autofocus><br><br>
+        
+        <label for="last name">last name:</label>
+        <input type="text" name="Last_name" id="Last_name"><br><br>
+
+        <label for="email_id"> Email Id:</label>
+        <input type="email" name="email_id" id="email_id"><br><br>
+
+        <label for="Password"> Password:</label>
+        <input type="password" name="password" id="password"><br><br>
+
+        <label for="phone number">phone number:</label>
+        <input type="tel" name="phone_number" id="phone_number" value="+91-9535599391" disabled><br><br>
+
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" min="20" set="2"><br><br>
+
+        <label for="dob">DOB</label>
+        <input type="date" name="dob" id="dob" max="2025-01-01"><br><br>
+
+        <label for="birthday_week">birth week</label>
+        <input type="week" name="birth week" id="birth week"><br><br>
+
+        <label for="birthday_month">birth month</label>
+        <input type="month" name="birth month" id="birth month"><br><br>
+
+        <label for="birthday_time">birth time</label>
+        <input type="time" name="birth time" id="birth time"><br><br>
+
+        <label for="dob_time">dob With Birthday Time</label>
+        <input type="datetime-local" name="DOB_time" id="DOB_time"><br><br>
+
+
+
+        <label for="Gender">Gender:</label>
+        
+        <input type="radio" name="Gender" id="Male" value="Male">
+        <label for="Male">Male</label>
+
+        <input type="radio" name="Gender" id="Female" value="Female">
+        <label for="Female">Female</label>
+
+        <input type="radio" name="Gender" id="Other" value="Other">
+        <label for="Other">Other</label><br><br>
+
+
+        <label for="subjects">Fav subjects:</label><br>
+
+        <input type="checkbox" name="subjects1" id="maths" value="maths">
+        <label for="maths">maths</label><br>
+
+        <input type="checkbox" name="subjects2" id="social science" value="social science">
+        <label for="social science">social science</label><br>
+
+        <input type="checkbox" name="subjects3" id="science" value="science">
+        <label for="science">science</label><br>
+
+        <input type="checkbox" name="subjects4" id="kannada" value="kannada">
+        <label for="kannada">kannada</label><br>
+
+        <input type="checkbox" name="subjects5" id="english" value="english">
+        <label for="english">english</label><br>
+
+        <input type="checkbox" name="subjects6" id="hindi" value="hindii">
+        <label for="hindi">hindi</label><br>
+
+        <label for="state">select state</label>
+        <select name="state" id="state">
+            <option value="KA">Karnatka</option>
+            <option value="TN">Tamilnadu</option>
+            <option value="KL">kerala</option>
+            <option value="MH">maharashtra</option>
+            <option value="MP">madhya pradesh</option>
+        </select><br>
+
+        <label for="rating">Rating</label>
+        <input type="range" name="range" id="rating" min="20" max="100"><br><br>
+        <label for="Address">address</label>
+        <textarea name="Address" id="Address" rows="10" cols="40"></textarea><br>
+        <label for="color">select your fav color</label>
+        <input type="color" name="color" id="color"><br><br>
+        
+    <br>
+    <input type="submit"><br>
+    <input type="file" name="upload" multiple accept="Application/docx"><br>
+    <label for="upload">upload</label><br>
+    <input type="reset">
+    </form>
+</body>
+</html>
