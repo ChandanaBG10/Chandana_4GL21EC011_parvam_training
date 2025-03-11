@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 1500px;
+        }
+        .parent{
+            border:1px solid black;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            display: inline-block;
+        }
+        .child-1{
+            /* static position is default for all elements */
+            position: static;
+        }
+        .child-2{
+            position: relative;
+            top: 50px;
+            left: 10px;
+        }
+        .child-3{
+            position: relative;
+            top: 50px;
+            left: 80px;
+            
+        }
+        .grand-child{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+            top: 50px;
+            left:50px;
+        }
+        .child-4{
+            position: relative;
+            top: 50px;
+            left: 100px;
+        }
+        .second-grand-child{
+            position:absolute;
+            width: 50px;
+            height: 50px;
+            background-color: chartreuse;
+            top: 20px;
+        }
+        .father{
+            width: 500px;
+            height: 300px;
+            background-color: green;
+            margin-top: 300px;
+           position: relative;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+        }
+        .son-1{
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            background-color: black;
+        }
+        .son-2{
+            position: absolute;
+            top: 100px;
+            left: 30px;
+            background-color: blue;
+        }
+        .son-3{
+            position: absolute;
+            top: 0px;
+            left: 250px;
+            background-color: rgb(178, 197, 6);
+        }
+        i{
+            padding: 20px;
+        }
+        p{
+            display: block;
+        }
+        .social-media{
+            width: 100px;
+            border: 1px solid black;
+            text-align: center;
+            position: fixed;
+            top: 200px;
+            right: 20px;
+        }
+        .contact-us{
+            padding: 20px;
+            margin-top: 200px;
+            text-align: center;
+            border: 1px dotted blue;
+            position: sticky;
+            top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="contact-us">
+        <i>📞-9535599391</i>
+        <i>📍-kushalnagr</i>
+        <i>📩-chandanac641@gmail.com</i>
+        <i>🌐-www.chandana.com</i>
+    </div>
+        <div class="parent">
+        <div class="child child-1"></div>
+        <div class="child child-2"></div>
+        <div class="child child-3">
+            <div class="child grand-child"></div>
+        </div>
+        <div class="child child-4">
+            <div class="child second-grand-child"></div>
+        </div>
+    </div>
+        <div class="father">
+            <div class="son son-1"></div>
+            <div class="son son-2"></div>
+            <div class="son son-3"></div>
+        </div>
+        <div class="social-media">
+            <!-- window+.button for emoji -->
+             <!-- i tag for italic and icons -->
+            <i>👍</i>
+            <p>like</p>
+            <i>💬</i>
+            <p>Comment</p>
+            <i>🔔</i>
+            <p>Subscribe</p>
+        </div>
+    
+</body>
+</html>

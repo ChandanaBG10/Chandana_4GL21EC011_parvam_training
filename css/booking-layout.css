@@ -1,0 +1,82 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.booking-layout{
+    border-spacing: 20px;
+    border: 2px solid lightgrey;
+}
+th{
+    border: 1px solid black;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: #ffd800;
+}
+td{
+    border: 0.5px solid gray;
+    text-align: center;
+    color: green;
+    background-color: floralwhite;
+}
+td:hover{
+    background-color: green;
+    color: white;
+}
+.vertical-gap, .horizontal-gap{
+    background-color: white;
+    border: none;
+}
+.vertical-gap{
+    width: 30px;
+}
+.horizontal-gap{
+    height: 30px;
+}
+.stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    padding: 30px;
+}
+.stats p{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0 0px;
+}
+.stats p:last-child{
+    margin: 5px 0 0px;
+}
+.available, .selected, .sold{
+    width: 20px;
+    height: 20px;
+    border: 0.5px solid gray;
+    text-align: center;
+    padding: 3px;
+}
+.available{
+    color: green;
+    background-color: #f2f3f5;
+}
+.selected{
+    background-color: green;
+    color: white;
+}
+.sold{
+    background-color: gray;
+    color: white;
+}
+.checked-text{
+    background-color: green;
+    padding: 10px;
+    color: white;
+}
+.sold input[type="checkbox"]{
+    display: none;
+}
+.sold:hover{
+    background-color: gray;
+    cursor: no-drop;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Internal CSS -->
+        <style>
+            /*Syntax: */
+            /* selector{
+            property1: value;
+            property2: value;
+            }*/
+            h1{          /* this is a element selector*/
+                color: #b55;  /* hex code - Hexadecimal */
+                margin: 20px;
+                margin-top: 50px;
+                margin-bottom: 10px;
+                margin-left: 100px;
+                margin-right: 0px;
+                padding: 40px;
+                padding-left: 50px;
+                padding-right: 16px;
+                padding-bottom: 20px;
+                padding-top: 2px;
+                border: 1px solid black;
+                /* syntax for shorthand property */
+                /* margin:top rigth bottom left-clockwise direction */
+                /* padding:top right bottom left */
+                margin:50px 20px 30px 40px;
+                /* opposite direction: top-bottom and left-right */
+                margin: 60px 20px;
+                /* top right-left bottom */
+                margin:30px 60px 90px;
+                padding:20px 30px 20px 40px;
+                padding: 50px 30px;
+                padding: 30px 50px 80px;
+            }
+            p{           /* this is a element selector*/
+                color: rgb(0, 0, 0);
+            }
+            th{
+                color: rgb(106, 8, 197);
+                background-color: aquamarine;
+            }
+            td{
+                /* rgb stand for red green blue value can be between 0 to 255 */
+                /* rgba method where a stand for alpha value varies from 0 to 1*/
+                /* hex code - Hexadecimal */
+                color: rgb(190, 76, 205);
+                color: rgba(190, 76, 205,1);
+                background-color: aquamarine;
+            }
+            table{
+                border-width:2px;
+                border-color: brown;
+                /* border-style: dashed,dotted, solid, dashed,groove,ridge */
+                border-style: dotted;
+                /* shorthand property */
+                /* syntax: border:width style color */
+                border:5px dashed yellowgreen;  
+                /* to make the border radius */
+                border-radius: 10px; 
+                /* we can apply border for 4 direction */
+                /* they are top,bottom,right,left; */
+                border-top: 10px dashed palegreen;
+                border-bottom: 10px dashed blue;
+                border-left: 10px dotted plum;
+                border-right: 10px dotted red;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 32px;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 10px;
+                /* to make all border merge */
+                border-collapse: collapse;
+            }
+            td{
+                border:2px solid blueviolet;
+                border-radius: 5px;
+                border-collapse:collapse ;
+            
+            }
+
+        </style>
+    </head>
+    <body>
+        <!--There are 3 types of CSs in web development-->
+        <!--Internal CSS, External CSs and Inline CSS-->
+        <h1>This is a Heading</h1>
+        <h1>This is a second Heading</h1>
+        <p>This is a paragraph</p>
+        <!-- we have different types of selector in CSS -->
+        <!-- they are:Element Selector,class selector,ID selector -->
+        <!-- Element selector include all HTML tags -->
+        <table>
+            <tr>
+                <th>Table heading 1</th>
+                <th>Table heading 2</th>
+                <th>Table heading 3</th>
+                
+            </tr>
+            <tr>
+                <td>Table body 11</td>
+                <td>Table body 12</td>
+                <td>Table body 13</td>
+    
+            </tr>
+            <tr>
+                <td>Table body 21</td>
+                <td>Table body 22</td>
+                <td>Table body 23</td>
+                
+            </tr>     
+        </table>
+    </body>
+</html>

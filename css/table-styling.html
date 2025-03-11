@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="booking-layout.css">
+</head>
+<body>
+    <h1>Ticket Booking Layout</h1>
+    <div class="container">
+        <div class="booking-table">
+            <table class="booking-layout">
+                <tr>
+                    <th>#</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th class="vertical-gap" rowspan="12"></th>
+                    <th>F</th>
+                    <th>G</th>
+                    <th>H</th>
+                    <th>I</th>
+                    <th>J</th>
+                </tr>
+                <tr>
+                    <th>A</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td class="sold">4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>B</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td class="sold">6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>C</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td class="sold">7</td>
+                    <td class="sold">8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>D</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>E</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th colspan="12" class="horizontal-gap"></th>
+                </tr>
+                <tr>
+                    <th>F</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>G</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>H</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>I</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th>J</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+            </table>
+        </div>
+         <div class="stats">
+                 <div class="available">A</div>
+                 <p>Available</p>
+                <div class="selected">S</div>
+                <p>Selected</p>
+                <div class="sold"></div>
+                <p>Sold</p>
+        </div>
+    </div>
+        <script>
+            document.addEventListener("DOMContentLoaded",function(){
+                document.querySelectorAll("td").forEach(td=>{
+                    let text=td.textContent.trim();  // get existing text
+                    let checkbox=document.createElement("input");
+                    checkbox.type="checkbox";
+                    checkbox.style.marginRight="5px"; //add some spacing
+
+                    //wrap text in a span for styling
+                    let span=document.createElement("span");
+                    span.textContent=text;
+                
+                    //Toggle class on span when checkbox is checked
+                    checkbox.addEventListener("click", function () {
+                        if (this.checked) {
+                            span.classList.add("checked-text");
+                            checkbox.style.display="none"
+                        } else  {
+                            span.classList.remove("checked-text");
+                        }        
+                        });
+
+                    //clear the td and append checkbox+ text
+                    td.innerHTML="";
+                    td.appendChild(checkbox);
+                    td.appendChild(span);
+
+            });
+            });        
+        </script>       
+</body>
+</html>

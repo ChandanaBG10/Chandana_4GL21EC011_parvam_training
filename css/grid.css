@@ -1,0 +1,55 @@
+.parent
+{
+    border: 1px solid black;
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    grid-template-columns: 100px 100px 200px 100px 100px;
+}
+.child{
+    background-color: crimson;
+    border: 2px solid rgb(63, 8, 167);
+    font-size: 40px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.child-2{
+    /* grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3; */
+    /* shorthand property */
+    /* syntax:grid-row:start/end ; */
+    grid-row: 1/3;
+    /* syntax:grid-column:start/end ; */
+    grid-column: 2/3;
+
+
+}
+.child-3{
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    /* one more shorthand property */
+    /* syntax:grid-area:row-start/ column-start/ row-end/ column-end */
+    grid-area: 1/5/3/5;
+
+
+
+}
+.child-4{
+    grid-row-start: 1;
+    grid-row-end: 6;
+    grid-column-start: 5;
+    grid-column-end: 8;
+}
+.child-5{
+    grid-row-start: 3;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+}

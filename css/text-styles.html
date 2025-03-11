@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+       
+        <style>
+            @font-face {
+                font-family: LilitaOne;
+                src: url("font/LilitaOne-Regular.ttf");
+            }
+            @font-face{
+                font-family:Permanent ;
+                src:url("font/PermanentMarker-Regular.ttf")
+            }
+            p{  
+                /* because of element selector we are getting repetative style */
+                color: black;
+                background-color: aqua;
+                padding: 10px;
+                letter-spacing: 4px;
+                word-spacing: 11px;
+            }
+            /* synatx for class selector:".class_name" */
+            .para-one{
+                color: blueviolet;
+                background: hotpink;
+                /* font-family: "Dancing Script", serif; */
+                font-size: 40px;
+                font-family:Permanent ;
+                text-align: end;
+            }
+            .para-two{
+                color: aquamarine;
+                background-color: black;
+            }
+            .some-para{
+                /* we can apply 4 values for text align property:left,right,center and justify */
+                text-align:justify;
+                /* we can apply underline, overflow,line through */
+                text-decoration: line-through;
+                text-transform: uppercase;
+                line-height: 2;
+            }
+            a{
+                text-decoration: none;
+            }
+            .heading-1{
+                font-size: 80px;
+                font-weight: 80px;
+                /* font-family: "sigmar",serif;  */
+                font-family: LilitaOne;
+                text-align: center;
+                
+                
+            }
+            .heading-2{
+                /* we can apply 3 values:uppercase,lowercase and capitalize */
+                text-transform: capitalize;
+                text-align: center;
+            }
+            .heading-3{
+                text-transform: uppercase;
+                text-align: center;
+            }
+          
+        </style>
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Sigmar&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet"> -->
+ 
+    </head>
+        <body>
+            <p class="para-one">This is a paragraph</p>
+            <p class="para-two">This is a second paragraph</p>
+            <p class="some-para"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni ratione atque fugit perferendis, consequatur laudantium consectetur, molestias necessitatibus deserunt dolore enim voluptatem, reiciendis natus soluta aspernatur ad itaque amet unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate debitis voluptate ex suscipit atque officia distinctio ducimus quae alias similique ea veniam quis eum facere dolores, maiores sed beatae rerum?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem unde assumenda vel excepturi? Modi eligendi consequuntur iste ad placeat. Incidunt suscipit sapiente, facere repellat animi hic ipsum voluptate quam tenetur reiciendis consectetur sunt cumque? Fugiat sit perferendis voluptatum adipisci necessitatibus.</p>
+            <p>This is a third paragraph</p>
+            <h1 class="para-one heading-1">Heading 1</h1>
+            <h1 class="para-one heading-2">Heading 2</h1>
+            <h1 class="para-one heading-3">Heading 3</h1>
+            <p class="para-one">The about written tag indicates the heading</p>
+            <ol class="para-two">
+                <li>list 1</li>
+                <li>list 2</li>
+                <li>list 3</li>
+            </ol>
+            <a href="https://Google.com">Google</a>
+            <a href="https://Facebook.com">Facebook</a>
+            <div>
+                This ia a div block of code.
+            </div>
+            <div>This is a another div block of code.</div>
+            <span>
+                This is a span code.
+            </span>
+            <span>This is a another span code.</span>
+            <!-- we have 2 types of elements in HTML.
+            They are:Block elements and Inline elements -->
+            <h1>This is a heading</h1>
+            <h2>This is a another heading</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas facilis similique molestiae mollitia aut ullam aspernatur asperiores, deserunt itaque illo!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, minima.</p>
+        </body>
+</html>

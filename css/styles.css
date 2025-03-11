@@ -1,0 +1,27 @@
+.parent{
+    border: 2px solid blue;
+    display: flex;
+    height: 500px;
+    
+    /* justify-content handles the horizontal direction or x plain; */
+    justify-content: start;
+    /* they are start, center, flex end,
+    space evenly=equal space between them
+    space around=middle has high space
+    space between= for spacing */
+    align-items:center;
+    /* align-items: handles the vertical direction or y plain*/
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-content: center;
+    gap: 100px;
+
+}
+.child{
+    width: 150px;
+    height: 100px;
+    background-color: palevioletred;
+    border: 1px solid white;
+    font-size: 30px;
+}
+/* css cannot work standalone */

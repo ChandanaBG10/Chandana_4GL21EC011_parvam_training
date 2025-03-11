@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+         @font-face {
+                font-family: LilitaOne;
+                src: url("LilitaOne-Regular.ttf");
+         }
+        .same-line{
+            display: inline;
+            
+        }
+        li{
+            display: inline;
+        }
+        a{
+            text-decoration: none;
+            padding: 10px;
+            background-color: gold;
+            font-size: 40px;
+            color: rgb(223, 14, 133);
+            font-family: LilitaOne;
+            
+           
+        }
+        ul{
+            text-align: center;
+        }
+        .link{
+            display:block;
+        }
+        img{
+            width: 300px;
+            display: block;
+        }
+        h2{
+            display: inline-block;
+            padding: 30px;
+            border:1px solid blueviolet;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border: 2px solid brown;
+            background-color: bisque;
+        }
+        .para span{
+          
+            display: none;
+        }
+       
+        .another-para span{
+           visibility: collapse;
+        }
+       
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="same-line">This is first heading.</h1>
+        <h1 class="same-line">This is another heading.</h1>
+        <p class="same-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis asperiores a culpa voluptate labore accusantium!</p>
+        <p class="same-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis esse autem dicta eos tenetur!</p>
+        <ul type="none">
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="about_us.html">About Us</a>
+            </li>
+            <li>
+                <a href="services.html">Services</a>
+            </li>
+            <li>
+                <a href="contact_us.html">Contact Us</a>
+            </li>
+        </ul>
+        <h1>Quick line</h1>
+        <a class="link" href="home.html">Home</a>
+        <a class="link" href="about_us.html">About Us</a>
+        <a class="link" href="services.html">Services</a>
+        <a class="link" href="contact_us.html">Contact Us</a> 
+        <img src="../media/lotus.jpg" alt="lotus" >
+        <figcaption>lotus</figcaption>
+        <img src="../media/india.jpg" alt="india">
+        <figcaption>flag</figcaption>
+        <h2>this is a sub heading 1</h2>
+        <h2>this is a sub heading 2</h2>
+    </div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <p class="para">We ae learning<span> CSS </span>.</p>
+        <p class="another-para">We are larning<span> CSS along with</span>HTML.</p>
+</body>
+</html>

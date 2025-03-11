@@ -1,0 +1,32 @@
+nav{
+    background-color: aliceblue;
+    border: 1px solid gray;
+}
+.menu-bar{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: blue;
+    font-size: 20px;
+    font-weight: bolder;
+}
+img{
+    width: 100px;
+}
+.menu-item{
+    padding: 20px;
+    flex-grow: 1;
+    /* flex-grow: elements should grow */
+}
+.logo{
+    flex-grow: 2;
+}
+a:hover{
+    color: pink;
+    text-decoration: underline;
+    font-size: 30px;
+}
