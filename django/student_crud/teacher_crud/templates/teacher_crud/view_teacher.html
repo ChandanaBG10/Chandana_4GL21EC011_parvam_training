@@ -1,0 +1,45 @@
+{% extends 'teacher_crud/menu.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Attribute</th>
+        <th scope="col">Value</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td>{{ teacher.name }}</td>
+      </tr>
+      <tr>
+        <th>Age</th>
+        <td>{{ teacher.age }}</td>
+    
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ teacher.email }}</td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td>{{ teacher.phone }}</td>
+      </tr>
+      <tr>
+        <th>Qualification</th>
+        <td>{{ teacher.qualification }}</td>
+      </tr>
+      <tr>
+        <th>subject</th>
+        <td>{{ teacher.subject }}</td>
+      </tr>
+      <tr>
+        <th>Experience</th>
+        <td>{{ teacher.experience }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

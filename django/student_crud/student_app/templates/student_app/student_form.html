@@ -1,0 +1,26 @@
+{% extends "student_app/navbar.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">
+        {% if update %}
+            Update Student Details
+        {% else %}
+            Add New Student
+        {% endif %}
+    </h2>
+    <form method="post" class="border p-4 bg-light rounded">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn {% if update %}btn-warning{% else %}btn-success{% endif %}">
+            {% if update %}
+                Update
+            {% else %}
+                Submit
+            {% endif %}
+        </button>
+        <a href="{% url 'student_list' %}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+{% endblock %}

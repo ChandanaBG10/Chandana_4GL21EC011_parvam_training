@@ -1,0 +1,33 @@
+{% extends "student_app/navbar.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Student Details</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <td>{{ student.name }}</td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td>{{ student.age }}</td>
+        </tr>
+        <tr>
+            <th>USN</th>
+            <td>{{ student.usn }}</td>
+        </tr>
+        <tr>
+            <th>Branch</th>
+            <td>{{ student.branch }}</td>
+        </tr>
+        <tr>
+            <th>Sem</th>
+            <td>{{ student.sem }}</td>
+        </tr>
+        <tr>
+            <th>Course</th>
+            <td>{{ student.course }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'student_list' %}" class="btn btn-secondary mt-3">Back</a>
+</div>
+{% endblock %}

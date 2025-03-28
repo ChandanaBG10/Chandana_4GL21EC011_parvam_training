@@ -1,0 +1,42 @@
+{% extends 'library_crud/libmenu.html' %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Attribute</th>
+        <th scope="col">Value</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td>{{ library.name }}</td>
+      </tr>
+      <tr>
+        <th>USN</th>
+        <td>{{ library.usn }}</td>
+    
+      </tr>
+      <tr>
+        <th>Branch</th>
+        <td>{{ library.branch }}</td>
+      </tr>
+      <tr>
+        <th>Bookname</th>
+        <td>{{ library.bookname }}</td>
+      </tr>
+      <tr>
+        <th>Author</th>
+        <td>{{ library.author }}</td>
+      </tr>
+      <tr>
+        <th>BookNumber</th>
+        <td>{{ library.booknumber }}</td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+{% endblock %}

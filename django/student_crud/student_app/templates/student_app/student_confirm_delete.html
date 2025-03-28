@@ -1,0 +1,11 @@
+{% extends "student_app/navbar.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h3 class="mb-4">Are you sure you want to delete the records of "{{ student.name }}"?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'student_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

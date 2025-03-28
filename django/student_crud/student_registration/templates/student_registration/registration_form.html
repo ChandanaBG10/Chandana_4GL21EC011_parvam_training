@@ -1,0 +1,30 @@
+{% extends 'student_registration/menu.html' %}
+
+{% block title %}Student Registration Form{% endblock title %}
+
+{% block styles %}
+<style>
+    #id_gender div:first-child{
+        display: none;
+    }
+    #id_gender label{
+        display: flex;
+        gap: 10px;
+    } 
+</style>
+{% endblock %}
+
+
+{% block content %}
+<h1>Student Registration Form</h1>
+<form method="post" enctype="multipart/form-data" class="mt-3">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.as_p }}
+
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="{% url 'list' %}" class="btn btn-danger">Cancel</a>
+</form>
+
+{% endblock %}
