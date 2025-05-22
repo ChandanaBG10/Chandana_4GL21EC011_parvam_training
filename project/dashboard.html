@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Online Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="stylee.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="stylee.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      background-color: #212529;
+      min-height: 100vh;
+      color: white;
+      padding-top: 1rem;
+    }
+    .sidebar a {
+      color: #ccc;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #343a40;
+      color: white;
+    }
+    .card-box {
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .profile-card, .score-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    form{
+      background:  rgba(255, 245, 245, 0.962);
+    }
+    
+  </style>
+</head>
+<header>
+  <div class="container nav">
+    <h1 class="logo">Online Quiz</h1>
+    <nav>
+      <ul>
+        <li><a href="quizz.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="question.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar">
+        <div class="text-center mb-4">
+          <h4 id="roleTitle">User</h4>
+          <button class="btn btn-light btn-sm me-1" onclick="setRole('teacher')">Teacher</button>
+          <button class="btn btn-light btn-sm" onclick="setRole('student')">Student</button>
+        </div>
+        <div id="navLinks"></div>
+      </div>
+
+      <!-- Main Dashboard -->
+      <div class="col-md-10 p-4">
+        <h2 id="dashboardHeader">Dashboard</h2>
+        <div class="row g-4" id="dashboardCards"></div>
+
+        
+
+        <!-- Student Profile -->
+      <div id="studentProfile" class="profile-card d-none">
+          <h4>Student Profile</h4>
+          <form id="studentForm">
+            <div class="mb-3">
+              <label class="form-label">Name:</label>
+              <input type="text" class="form-control" id="studentName" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email:</label>
+              <input type="email" class="form-control" id="studentEmail" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password:</label>
+              <input type="text" class="form-control" id="studentPassword" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number:</label>
+              <input type="tel" class="form-control" id="studentNumber" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+      </div>
+  
+         <!-- Teacher Profile -->
+        <div id="teacherProfile" class="profile-card d-none">
+          <h4>Teacher Profile</h4>
+          <form id="teacherForm">
+            <div class="mb-3">
+              <label class="form-label">Name:</label>
+              <input type="text" class="form-control" id="teacherName" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email:</label>
+              <input type="email" class="form-control" id="teacherEmail" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password:</label>
+              <input type="text" class="form-control" id="teacherPassword" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number:</label>
+              <input type="tel" class="form-control" id="teacherNumber" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Department:</label>
+              <input type="text" class="form-control" id="teacherDept" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+        
+        <!-- Student Scores -->
+        <div id="studentScores" class="score-card d-none">
+          <h4>My Scores</h4>
+          <ul>
+            <li><strong>Quiz 1:</strong> 85%</li>
+            <li><strong>Quiz 2:</strong> 90%</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let role = 'student';
+
+    const roleTitle = document.getElementById('roleTitle');
+    const dashboardHeader = document.getElementById('dashboardHeader');
+    const dashboardCards = document.getElementById('dashboardCards');
+    const navLinks = document.getElementById('navLinks');
+    const studentProfile = document.getElementById('studentProfile');
+    const studentScores = document.getElementById('studentScores');
+    const teacherProfile = document.getElementById('teacherProfile');
+
+    const content = {
+      teacher: {
+        nav: [
+          { label: "Manage Quizzes", icon: "fa-clipboard-list", href: "manage.html" },
+          { label: "Manage Students", icon: "fa-users-cog", href: "managestudent.html" },
+          { label: "Teacher Profile", icon: "fa-user", href: "#", action: "showTeacherProfile" }
+        ],
+        cards: [
+          { title: "Total Students", count: 10, icon: "fa-users", color: "primary" },
+          { title: "Courses Created", count: 3, icon: "fa-book", color: "info" },
+          { title: "Questions Added", count: 45, icon: "fa-question-circle", color: "warning" }
+        ]
+      },
+      student: {
+        nav: [
+          { label: "Take Quiz", icon: "fa-play-circle", href: "question.html" },
+          { label: "My Scores", icon: "fa-chart-bar", href: "#", action: "showScores" },
+          { label: "Edit Profile", icon: "fa-user", href: "#", action: "showProfile" }
+        ],
+        cards: [
+          { title: "Quizzes Taken", count: 5, icon: "fa-pen", color: "success" },
+          { title: "Average Score", count: "82%", icon: "fa-percent", color: "danger" }
+        ]
+      }
+    };
+
+    function setRole(selectedRole) {
+      role = selectedRole;
+      studentProfile.classList.add('d-none');
+      studentScores.classList.add('d-none');
+      teacherProfile.classList.add('d-none');
+      renderDashboard();
+    }
+
+    function renderDashboard() {
+      roleTitle.innerText = role.charAt(0).toUpperCase() + role.slice(1);
+      dashboardHeader.innerText = roleTitle.innerText + " Dashboard";
+
+      navLinks.innerHTML = content[role].nav.map(link =>
+        `<a href="${link.href}" onclick="${link.action ? link.action + '(); return false;' : ''}">
+           <i class="fas ${link.icon} me-2"></i>${link.label}</a>`).join("");
+
+      dashboardCards.innerHTML = content[role].cards.map(card =>
+        `<div class="col-md-4">
+          <div class="card-box bg-${card.color}">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h5>${card.title}</h5>
+                <h3>${card.count}</h3>
+              </div>
+              <i class="fas ${card.icon} fa-2x"></i>
+            </div>
+          </div>
+        </div>`).join("");
+    }
+
+    function showProfile() {
+      studentProfile.classList.remove('d-none');
+      studentScores.classList.add('d-none');
+      teacherProfile.classList.add('d-none');
+    }
+
+    function showScores() {
+      studentScores.classList.remove('d-none');
+      studentProfile.classList.add('d-none');
+      teacherProfile.classList.add('d-none');
+    }
+
+    function showTeacherProfile() {
+      teacherProfile.classList.remove('d-none');
+      studentScores.classList.add('d-none');
+      studentProfile.classList.add('d-none');
+    }
+
+    renderDashboard();
+
+    // Load saved data
+function loadProfileData() {
+  document.getElementById('studentName').value = localStorage.getItem('studentName') || 'John Doe';
+  document.getElementById('studentEmail').value = localStorage.getItem('studentEmail') || 'john@example.com';
+  document.getElementById('studentPassword').value = localStorage.getItem('studentPassword') || 'john@123';
+  document.getElementById('studentNumber').value = localStorage.getItem('studentNumber') || '12345678900';
+
+  document.getElementById('teacherName').value = localStorage.getItem('teacherName') || 'Ms. Smith';
+  document.getElementById('teacherEmail').value = localStorage.getItem('teacherEmail') || 'teacher@example.com';
+  document.getElementById('teacherPassword').value = localStorage.getItem('teacherPassword') || 'teacher@123';
+  document.getElementById('teacherNumber').value = localStorage.getItem('teacherNumber') || '98765432100';
+  document.getElementById('teacherDept').value = localStorage.getItem('teacherDept') || 'Computer Science';
+}
+
+// Save data
+document.getElementById('studentForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  localStorage.setItem('studentName', document.getElementById('studentName').value);
+  localStorage.setItem('studentEmail', document.getElementById('studentEmail').value);
+  localStorage.setItem('studentPassword', document.getElementById('studentPassword').value);
+  localStorage.setItem('studentNumber', document.getElementById('studentNumber').value);
+  alert("Student profile updated!");
+});
+
+document.getElementById('teacherForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  localStorage.setItem('teacherName', document.getElementById('teacherName').value);
+  localStorage.setItem('teacherEmail', document.getElementById('teacherEmail').value);
+  localStorage.setItem('teacherPassword', document.getElementById('teacherPassword').value);
+  localStorage.setItem('teacherNumber', document.getElementById('teacherNumber').value);
+  localStorage.setItem('teacherDept', document.getElementById('teacherDept').value);
+  alert("Teacher profile updated!");
+});
+
+// Load on start
+loadProfileData();
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

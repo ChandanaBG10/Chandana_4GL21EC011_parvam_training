@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Questions</title>
+  <link rel="stylesheet" href="stylee.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="stylee.css">
+  <style>
+    .manage-questions-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-orange {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    .btn-orange:hover {
+      background-color: #fb8c00;
+    }
+
+    .table thead {
+      background-color: #ffcc80;
+    }
+
+    .add-question-container {
+      margin-bottom: 20px;
+      background:  rgba(255, 245, 245, 0.962);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <h1 class="logo">Online Quiz</h1>
+      <nav>
+        <ul>
+          <li><a href="quizz.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="question.html">Quiz</a></li>
+          
+      
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="container manage-questions-container">
+    <h2 class="text-center mb-4">Manage Questions</h2>
+
+    <!-- Add Question Form -->
+    <div class="add-question-container">
+      <input type="text" id="newQuestion" class="form-control mb-2" placeholder="Enter new question" />
+      <input type="text" id="newAnswer" class="form-control mb-2" placeholder="Enter correct answer" />
+      <button class="btn btn-sm btn-orange" onclick="addQuestion()">Add Question</button>
+    </div>
+
+    <table class="table table-striped table-bordered align-middle">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Question</th>
+          <th>Correct Answer</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="questionTableBody">
+        <!-- Questions will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+  
+
+  <script>
+    // Sample question data
+    const questions = [
+      {
+        id: 1,
+        question: "What is the capital of France?",
+        correct: "Paris"
+      },
+      {
+        id: 2,
+        question: "Which planet is known as the Red Planet?",
+        correct: "Mars"
+      }
+    ];
+
+    function renderQuestions() {
+      const tableBody = document.getElementById("questionTableBody");
+      tableBody.innerHTML = "";
+      questions.forEach((q, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${q.question}</td>
+            <td>${q.correct}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" onclick="editQuestion(${q.id})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteQuestion(${q.id})">Delete</button>
+            </td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function addQuestion() {
+      const newQuestion = document.getElementById('newQuestion').value;
+      const newAnswer = document.getElementById('newAnswer').value;
+      if (newQuestion && newAnswer) {
+        const newId = questions.length ? questions[questions.length - 1].id + 1 : 1;
+        questions.push({ id: newId, question: newQuestion, correct: newAnswer });
+        renderQuestions();
+        document.getElementById('newQuestion').value = '';
+        document.getElementById('newAnswer').value = '';
+      } else {
+        alert("Please provide both question and answer.");
+      }
+    }
+
+    function editQuestion(id) {
+      const questionToEdit = questions.find(q => q.id === id);
+      const newQuestion = prompt("Edit question:", questionToEdit.question);
+      const newAnswer = prompt("Edit correct answer:", questionToEdit.correct);
+      if (newQuestion !== null && newAnswer !== null) {
+        questionToEdit.question = newQuestion;
+        questionToEdit.correct = newAnswer;
+        renderQuestions();
+      }
+    }
+
+    function deleteQuestion(id) {
+      const index = questions.findIndex(q => q.id === id);
+      if (index !== -1) {
+        if (confirm("Are you sure you want to delete this question?")) {
+          questions.splice(index, 1);
+          renderQuestions();
+        }
+      }
+    }
+
+    window.onload = renderQuestions;
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>

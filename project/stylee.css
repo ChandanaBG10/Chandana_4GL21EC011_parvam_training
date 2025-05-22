@@ -1,0 +1,271 @@
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  /* body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background: #fff;
+    color: #333;
+    
+  } */
+   body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.8;
+  background-image: url('../media/bible-1868070_1280.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #333;
+  color: #333;
+}
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  header {
+    background: #000;
+    color: #fff;
+    padding: 1em 0;
+  }
+  footer {
+    background: #000;
+    color: #fff;
+    padding: 0.5em 0;
+    text-align: center;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    color: rgba(230, 189, 9, 0.867);
+    stroke-width: 0;
+    animation: logo 5s linear infinite;
+  }
+  
+  @keyframes logo {
+    0% {
+      stroke-width: 1pt;
+      stroke-dashoffset: 1200;
+      fill-opacity: 0;
+    }
+    50% {
+      fill-opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      fill-opacity: 1;
+      stroke-width: 0pt;
+    }
+  }
+  
+  
+  .hero-text {
+    background: rgba(0,0,0,0.6);
+    padding: 2em;
+    border-radius: 10px;
+    color: #fff;
+  }
+  
+  .hero-text h1 {
+    padding: 1%;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    color: rgba(230, 189, 9, 0.867);
+    text-align: center;
+  }
+  .hero-text h3 {
+    padding: 2%;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: rgba(230, 189, 9, 0.867);
+    text-align: center;}
+
+  
+  .hero-text p {
+    padding-bottom: 1%;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn, .nav-link.active {
+    padding: 0.75em 1.5em;
+    background: rgba(230, 189, 9, 0.867) !important;
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+  }
+  .container-1{
+    max-width: 700px;
+    width: 100px;
+  }
+  .item{
+    color: rgba(230, 189, 9, 0.867);
+    font-size: larger;
+    font-weight: 600;
+  }
+  @keyframes fadeZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .start-animation {
+    animation: fadeZoom 2.5s ease-out;
+    color: orange;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  
+  /* login */
+  .form-container {
+    max-width: 400px;
+    margin: 5% auto;
+    padding: 2rem;
+    background: rgba(255, 245, 245, 0.962);
+   
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  .nav-tabs .nav-link.active  {
+    background-color: #0d6efd;
+    color: rgb(218, 167, 12);
+  }
+  
+
+  /* student */
+  
+  .quiz-box {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 245, 245, 0.962);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  }
+  .timer {
+    font-size: 1.2rem;
+    color: #dc3545;
+  }
+  .feedback {
+    font-weight: bold;
+  }
+  .question-number {
+    font-weight: bold;
+  }
+    
+
+  .form-check-input[type=radio]{
+    padding: 10px;
+  }
+
+  /* dashboard */
+  .dashboard-wrapper {
+    min-height: 100vh;
+    display: flex;
+  }
+  
+  .dashboard-sidebar {
+    width: 200px;
+    background-color: #343a40;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .sidebar-title {
+    color: #ffa726;
+    font-weight: bold;
+  }
+  
+  .sidebar-link {
+    color: #fff;
+    padding: 10px 0;
+    display: block;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .sidebar-link:hover {
+    color: #ffa726;
+    text-decoration: underline;
+  }
+  
+  .logout-link {
+    color: #dc3545;
+  }
+  
+  .dashboard-main {
+    background: transparent;
+  }
+  
+  .section-card {
+    background-color: #fff;
+    border-left: 5px solid #ffa726;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .section-links {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .section-links li {
+    margin-bottom: 10px;
+  }
+  
+  .section-button {
+    display: inline-block;
+    background-color: #ffa726;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .section-button:hover {
+    background-color: #fb8c00;
+  }

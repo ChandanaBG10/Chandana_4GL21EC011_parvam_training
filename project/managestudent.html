@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Students</title>
+  <link rel="stylesheet" href="stylee.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="stylee.css">
+  <style>
+    .manage-students-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-orange {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    .btn-orange:hover {
+      background-color: #fb8c00;
+    }
+
+    .table thead {
+      background-color: #ffcc80;
+    }
+
+    .add-student-container {
+      margin-bottom: 20px;
+      background: rgba(255, 245, 245, 0.962); ;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+          <h1 class="logo">Online Quiz</h1>
+          <nav>
+            <ul>
+              <li><a href="quizz.html">Home</a></li>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="dashboard.html">Dashboard</a></li>
+              <li><a href="question.html">Quiz</a></li>
+              
+          
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+  <div class="container manage-students-container">
+    <h2 class="text-center mb-4">Manage Students</h2>
+
+    <!-- Add Student Form -->
+    <div class="add-student-container">
+      <input type="text" id="studentName" class="form-control mb-2" placeholder="Enter student name" />
+      <input type="number" id="studentAge" class="form-control mb-2" placeholder="Enter student age" />
+      <input type="text" id="studentGender" class="form-control mb-2" placeholder="Enter gender (Male/Female)" />
+      <input type="text" id="studentGrade" class="form-control mb-2" placeholder="Enter grade (A/B/C)" />
+      <input type="text" id="studentSubject" class="form-control mb-2" placeholder="Enter subject" />
+      <input type="number" id="studentScore" class="form-control mb-2" placeholder="Enter score" />
+      <button class="btn btn-sm btn-orange" onclick="addStudent()">Add Student</button>
+    </div>
+
+    <table class="table table-striped table-bordered align-middlez">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Grade</th>
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <!-- Students will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Sample student data
+    const students = [];
+
+    function renderStudents() {
+      const tableBody = document.getElementById("studentTableBody");
+      tableBody.innerHTML = "";
+      students.forEach((s, index) => {
+        const status = s.score >= 50 ? "Passed" : "Failed";  // Simple pass/fail logic
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${s.name}</td>
+            <td>${s.age}</td>
+            <td>${s.gender}</td>
+            <td>${s.grade}</td>
+            <td>${s.subject}</td>
+            <td>${s.score}</td>
+            <td>${status}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" onclick="editStudent(${s.id})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.id})">Delete</button>
+            </td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function addStudent() {
+      const name = document.getElementById('studentName').value;
+      const age = document.getElementById('studentAge').value;
+      const gender = document.getElementById('studentGender').value;
+      const grade = document.getElementById('studentGrade').value;
+      const subject = document.getElementById('studentSubject').value;
+      const score = parseInt(document.getElementById('studentScore').value);
+
+      if (name && age && gender && grade && subject && score) {
+        const newId = students.length ? students[students.length - 1].id + 1 : 1;
+        students.push({
+          id: newId,
+          name: name,
+          age: age,
+          gender: gender,
+          grade: grade,
+          subject: subject,
+          score: score
+        });
+        renderStudents();
+
+        // Reset form
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentAge').value = '';
+        document.getElementById('studentGender').value = '';
+        document.getElementById('studentGrade').value = '';
+        document.getElementById('studentSubject').value = '';
+        document.getElementById('studentScore').value = '';
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+
+    function editStudent(id) {
+      const studentToEdit = students.find(s => s.id === id);
+      const newName = prompt("Edit student name:", studentToEdit.name);
+      const newAge = prompt("Edit student age:", studentToEdit.age);
+      const newGender = prompt("Edit gender:", studentToEdit.gender);
+      const newGrade = prompt("Edit grade:", studentToEdit.grade);
+      const newSubject = prompt("Edit subject:", studentToEdit.subject);
+      const newScore = prompt("Edit score:", studentToEdit.score);
+
+      if (newName !== null && newAge !== null && newGender !== null && newGrade !== null && newSubject !== null && newScore !== null) {
+        studentToEdit.name = newName;
+        studentToEdit.age = newAge;
+        studentToEdit.gender = newGender;
+        studentToEdit.grade = newGrade;
+        studentToEdit.subject = newSubject;
+        studentToEdit.score = parseInt(newScore);
+        renderStudents();
+      }
+    }
+
+    function deleteStudent(id) {
+      const index = students.findIndex(s => s.id === id);
+      if (index !== -1) {
+        if (confirm("Are you sure you want to delete this student?")) {
+          students.splice(index, 1);
+          renderStudents();
+        }
+      }
+    }
+
+    window.onload = renderStudents;
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>

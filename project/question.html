@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App with Feedback</title>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="stylee.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<header>
+  <div class="container nav">
+    <h1 class="logo">Online Quiz</h1>
+    <nav>
+      <ul>
+        <li><a href="quizz.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="question.html">Quiz</a></li>
+       
+
+      </ul>
+    </nav>
+  </div>
+</header>
+<body class="bg-light">
+
+<div class="quiz-box">
+  <h2 class="mb-4">Start Quiz</h2>
+  <div class="timer mb-3" id="timer">Time left: 2:00</div>
+
+  <div id="quiz-content">
+    <div class="question-number mb-2" id="question-number"></div>
+    <div id="question" class="h5"></div>
+    <ol type="A">
+        <div id="options" class="mt-3"></div>
+    </ol>
+  </div>
+
+  <div class="d-flex justify-content-between mt-4">
+    <button class="btn btn-secondary" onclick="prevQuestion()">Previous</button>
+    <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+    <button id="submitBtn" class="btn btn-success d-none" onclick="submitQuiz()">Submit</button>
+  </div>
+
+  <div id="result" class="mt-4 d-none">
+    <h4>Your Score: <span id="score"></span></h4>
+    <div id="all-feedback" class="mt-3"></div>
+  </div>
+
+<script>
+  const quizData = [
+  {
+      question: "What is the capital of France?",
+      options: ["Berlin", "Paris", "Madrid", "Rome"],
+      correct: "Paris"
+    },
+    {
+      question: "Which planet is known as the Red Planet?",
+      options: ["Venus", "Mars", "Jupiter", "Saturn"],
+      correct: "Mars"
+    },
+    {
+      question: "What is the largest mammal?",
+      options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+      correct: "Blue Whale"
+    },
+    {
+      question: "Which is the Capital of Australia?",
+      options: ["Sydney", "Melbourne", "Canberra", "Perth"],
+      correct: "Canberra"
+    },
+    {
+      question: "Who Wrote the play Romeo and juliet?",
+      options: ["Charles", "Willam Shakespeare", "Jane Twain", "Mark Austen"],
+      correct: "Willam Shakespeare"
+    },
+    {
+      question: "Which language runs in a web browser?",
+      options: ["Java", "C", "Python", "JavaScript"],
+      correct: "JavaScript"
+    },
+    {
+      question: "What does CSS stand for?",
+      options: ["Central Style Sheet", "Cascading Style Sheets", "Cascading Simple Sheets", "Control Style Sheet"],
+      correct: "Cascading Style Sheets"
+    },
+    {
+      question: "What year was JavaScript launched?",
+      options: ["1996", "1995", "1994", "1993"],
+      correct: "1995"
+    },
+    {
+      question: "Which is oldest Indian language?",
+      options: ["Telagu", "Hindi", "Tamil", "Panjabi"],
+      correct: "Tamil"
+    },
+    {
+      question: "Which language has a richest vocabulary?",
+      options: ["Hindi", "French", "English", "German"],
+      correct: "English" 
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+  let totalTime = 120;
+  let timer;
+  const userAnswers = Array(quizData.length).fill(null);
+
+  function startTimer() {
+    updateTimerDisplay();
+    timer = setInterval(() => {
+      totalTime--;
+      updateTimerDisplay();
+      if (totalTime <= 0) {
+        clearInterval(timer);
+        submitQuiz();
+      }
+    }, 1000);
+  }
+
+  function updateTimerDisplay() {
+    const minutes = Math.floor(totalTime / 60);
+    const seconds = totalTime % 60;
+    document.getElementById("timer").textContent = `Time left: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+  }
+
+  function loadQuestion() {
+    const q = quizData[currentQuestion];
+    document.getElementById("question-number").textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+    document.getElementById("question").textContent = q.question;
+    const optionsContainer = document.getElementById("options");
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach(option => {
+      const checked = userAnswers[currentQuestion] === option ? "checked" : "";
+      optionsContainer.innerHTML += `
+      <li class="pt-3">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="option" value="${option}" id="${option}" ${checked}>
+          <label class="form-check-label" for="${option}">${option}</label>
+        </div>
+      </li>
+      `;
+    });
+
+    // Show submit button only on the last question
+    document.getElementById("submitBtn").classList.toggle("d-none", currentQuestion !== quizData.length - 1);
+    document.getElementById("nextBtn").classList.toggle("d-none", currentQuestion === quizData.length - 1);
+  }
+
+  function saveAnswer() {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (selected) {
+      userAnswers[currentQuestion] = selected.value;
+    }
+  }
+
+  function nextQuestion() {
+    saveAnswer();
+    if (currentQuestion < quizData.length - 1) {
+      currentQuestion++;
+      loadQuestion();
+    }
+  }
+
+  function prevQuestion() {
+    saveAnswer();
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      loadQuestion();
+    }
+  }
+
+  function submitQuiz() {
+    saveAnswer();
+    clearInterval(timer);
+
+    // Evaluate score
+    score = 0;
+    for (let i = 0; i < quizData.length; i++) {
+      if (userAnswers[i] === quizData[i].correct) {
+        score++;
+      }
+    }
+
+    // Hide quiz and show result
+    document.getElementById("quiz-content").classList.add("d-none");
+    document.querySelector(".btn-secondary").classList.add("d-none");
+    document.getElementById("nextBtn").classList.add("d-none");
+    document.getElementById("submitBtn").classList.add("d-none");
+    document.getElementById("timer").classList.add("d-none");
+    document.getElementById("result").classList.remove("d-none");
+
+    document.getElementById("score").textContent = `${score} / ${quizData.length}`;
+    const feedbackContainer = document.getElementById("all-feedback");
+    feedbackContainer.innerHTML = "";
+
+    quizData.forEach((q, i) => {
+      const userAns = userAnswers[i] || "No answer";
+      const isCorrect = userAns === q.correct;
+      feedbackContainer.innerHTML += `
+        <div class="mb-3">
+          <p><strong>Q${i + 1}:</strong> ${q.question}</p>
+          <p>Your answer: <span class="${isCorrect ? 'text-success' : 'text-danger'}">${userAns}</span></p>
+          ${!isCorrect ? `<p>Correct answer: <span class="text-success">${q.correct}</span></p>` : ""}
+          <hr>
+        </div>
+      `;
+    });
+  }
+
+
+  window.onload = () => {
+    startTimer();
+    loadQuestion();
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
