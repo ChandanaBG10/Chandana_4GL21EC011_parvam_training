@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Student Dashboard{% endblock %}
+{% block content %}
+<h2>Welcome, {{ user.name }} (Student)</h2>
+<h4>Available Quizzes:</h4>
+<ul>
+  {% for quiz in quizzes %}
+    <li>
+      {{ quiz.title }} -
+      <a href="{% url 'attempt_quiz' quiz.id %}" class="btn btn-sm btn-primary">Attempt</a>
+    </li>
+  {% empty %}
+    <li>No quizzes available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
