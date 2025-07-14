@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'quiz',  # Your quiz application
 ]
 
+AUTH_USER_MODEL = 'quiz.User'  # Replace 'yourapp' with your actual app name
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

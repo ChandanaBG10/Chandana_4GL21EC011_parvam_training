@@ -2,23 +2,26 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.quiz_list, name='quiz_list'),
+    path('', views.home, name='home'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 
-    # User and Role Management
-    path('register/', views.register_user, name='register_user'),
-    path('create-role/', views.create_role, name='create_role'),
-    path('assign-permission/', views.assign_role_permission, name='assign_permission'),
+    path('teacher/dashboard/', views.dashboard_teacher, name='dashboard_teacher'),
+    path('student/dashboard/', views.dashboard_student, name='dashboard_student'),
 
-    # Question & Quiz Creation
-    path('question-type/', views.create_question_type, name='create_question_type'),
-    path('create-question/', views.create_question, name='create_question'),
-    path('create-quiz/', views.create_quiz, name='create_quiz'),
-    path('assign-question/', views.assign_question_to_quiz, name='assign_question_to_quiz'),
+    path('quiz/create/', views.create_quiz, name='create_quiz'),
+    path('question/add/', views.add_question, name='add_question'),
+    path('quiz/<int:quiz_id>/attempt/', views.attempt_quiz, name='attempt_quiz'),
 
-    # Quiz Participation
-    path('attend-quiz/', views.attend_quiz, name='attend_quiz'),
-    path('submit-answer/', views.submit_answer, name='submit_answer'),
+    
+    path('question/edit/<int:question_id>/', views.edit_question, name='edit_question'),
+    path('question/delete/<int:question_id>/', views.delete_question, name='delete_question'),
 
-    # View Quiz Details
-    path('quiz/<int:quiz_id>/', views.quiz_detail, name='quiz_detail'),
+    path('edit-profile/', views.edit_profile, name='edit_profile'),
+
+
+    
+
+
 ]

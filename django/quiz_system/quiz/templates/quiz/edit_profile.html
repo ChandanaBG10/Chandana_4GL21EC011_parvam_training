@@ -1,0 +1,39 @@
+{% extends 'quiz/base.html' %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-header">
+      <h4>Edit Profile</h4>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+          {{ form.name.label_tag }} {{ form.name }}
+        </div>
+        <div class="mb-3">
+          {{ form.email.label_tag }} {{ form.email }}
+        </div>
+        <div class="mb-3">
+          {{ form.phone.label_tag }} {{ form.phone }}
+        </div>
+        <div class="mb-3">
+          {{ form.password.label_tag }} {{ form.password }}
+          <small class="form-text text-muted">Leave blank to keep your current password.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+       {% if request.user.role.role_name == 'Teacher' %}
+  <a href="{% url 'dashboard_teacher' %}" class="btn btn-secondary">Cancel</a>
+{% else %}
+  <a href="{% url 'dashboard_student' %}" class="btn btn-secondary">Cancel</a>
+{% endif %}
+
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

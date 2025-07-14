@@ -1,0 +1,15 @@
+{% extends 'quiz/base.html' %}
+
+{% block title %}Edit Question{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit Question</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'add_question' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

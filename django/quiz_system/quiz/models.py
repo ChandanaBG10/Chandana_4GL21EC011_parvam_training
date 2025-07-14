@@ -1,97 +1,80 @@
-
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
-# Create your models here.
+# ------------------ User & Role ------------------
 
 class Role(models.Model):
-    role_name = models.CharField(max_length=100)
+    role_name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.role_name
-      
-class User(models.Model):
-    
+
+class UserManager(BaseUserManager):
+    def create_user(self, email, name, phone, password=None, role=None):
+        if not email:
+            raise ValueError("Users must have an email address")
+        user = self.model(email=self.normalize_email(email), name=name, phone=phone, role=role)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, name, phone, password=None):
+        role, created = Role.objects.get_or_create(role_name='Admin')
+        user = self.create_user(email, name, phone, password, role=role)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
+class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.IntegerField()
-    password = models.CharField(max_length=50)
-    role_name= models.ForeignKey(Role, on_delete=models.CASCADE)
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=15)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name', 'phone']
 
     def __str__(self):
         return self.name
 
-
-
-class RolePermission(models.Model):
-
-    role_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-    Permission_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-class QuestionType(models.Model):
-    type = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-class Question(models.Model):
-    qt_id = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
-    question = models.TextField()
-    options = models.TextField()
-    key_answer = models.CharField(max_length=100)
-    marks = models.IntegerField()
-
-    def __str__(self):
-        return self.name
+# ------------------ Quiz ------------------
 
 class Quiz(models.Model):
-    title = models.CharField(max_length=100)
-    points = models.IntegerField()
-    duration = models.IntegerField()
-    total_marks = models.IntegerField()
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.title
 
-class QuizQuestion(models.Model):
-    quiz_id = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    marks =models.IntegerField()
+# ------------------ Question ------------------
 
-    def __str__(self):
-        return self.name
-
-class AttendQuiz(models.Model):
-    user_id = models.ForeignKey(Role, on_delete=models.CASCADE)
-    quiz_id = models.IntegerField(QuizQuestion, on_delete=models.CASCADE)
-    time_taken = models.IntegerField()
-    final_score = models.IntegerField()
-    quiz_completed = models.BooleanField()
-    number_of_question = models.IntegerField()
-    Attend_number = models.IntegerField()
-    started_at = models.DateField()
-    submitted_at = models.DateField()
-
+class Question(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions')
+    text = models.TextField()
+    option1 = models.CharField(max_length=255)
+    option2 = models.CharField(max_length=255)
+    option3 = models.CharField(max_length=255)
+    option4 = models.CharField(max_length=255)
+    correct_option = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.text
+
+    def get_options(self):
+        return [self.option1, self.option2, self.option3, self.option4]
+
+# ------------------ Answer (Optional) ------------------
 
 class Answer(models.Model):
-    
-    attend_quiz_id = models.ForeignKey(AttendQuiz, on_delete=models.CASCADE)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    selected_option = models.CharField()
-    is_correct = models.BooleanField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    selected_option = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
-
-
-        
-
-
-
-
-
+    def is_correct(self):
+        return self.selected_option == self.question.correct_option

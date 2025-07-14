@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'quiz/base.html' %}
 {% block title %}Quiz List{% endblock %}
 {% block content %}
 <h3>All Quizzes</h3>
 <ul>
   {% for quiz in quizzes %}
-    <li>{{ quiz.title }} - <a href="{% url 'view_quiz' quiz.id %}">View</a></li>
+    <li>{{ quiz.title }} - <a href="{% url 'view_quiz.html' quiz.id %}">View</a></li>
   {% endfor %}
 </ul>
 {% endblock %}
